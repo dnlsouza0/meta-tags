@@ -1,0 +1,15 @@
+<?php
+if ($block->moduleIsEnable() && $block->pageHaveMultStoreViews()):
+?>
+<?php foreach ($block->getAllStoresView() as $storeview): ?>
+    <?php
+    $page = $block->getPage();
+    $storeLanguage = $block->getStoreLanguage($storeview);
+    $baseUrl = $this->getUrl();
+    $cmsPageUrl = $page->getIdentifier() . '/';
+    ?>
+    <link rel="alternate" hreflang="<?= $storeLanguage ?>" href="<?= $baseUrl . $cmsPageUrl ?>"/>
+<?php endforeach; ?>
+<?php
+endif;
+?>
